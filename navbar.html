@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style> 
+body {
+  background-color: 				#FF0000;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+div.table-title {
+   display: block; 
+ 
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%; 
+  
+}
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:35px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+td:last-child {
+  border-right: 0px;
+}
+th.text-left {
+  text-align: left;
+}
+th.text-center {
+  text-align: center;
+}
+th.text-right {
+  text-align: right;
+}
+td.text-left {
+  text-align: left;
+}
+td.text-center {
+  text-align: center;
+}
+td.text-right {
+  text-align: right;
+}
+	
+.headertest
+    {
+    text-align:center;
+    width:100%;
+    }
+
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%; 
+  
+}
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:35px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+td:last-child {
+  border-right: 0px;
+}
+th.text-left {
+  text-align: left;
+}
+th.text-center {
+  text-align: center;
+}
+th.text-right {
+  text-align: right;
+}
+td.text-left {
+  text-align: left;
+}
+td.text-center {
+  text-align: center;
+}
+td.text-right {
+  text-align: right;
+}
+	
+.headertest
+    {
+    text-align:center;
+    width:100%;
+    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topnav {
+  overflow: hidden;
+  background-color: 	#808080;
+  
+  }
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+ 
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.dropdown-item{
+	padding:20px;
+    background-color: blue;
+  }
+  
+  form.ws-validate{
+  	float:right;
+    display: inline-flex;
+  }
+  
+  .form-row.show-inputbtns {
+  	margin-right: 5px;
+  }
+  
+  button.btn.btn-primary{
+  	margin-left: 440px;
+  }
+</style>
+</head>
+<body>
+
+
+<div class="topnav">
+<form action="" class="ws-validate">
+     
+    <div class="form-row show-inputbtns" >
+        <input type="date" data-date-inline-picker="false" data-date-popover='{
+	"inline": true
+}' />
+    </div>
+    <div class="form-rows">
+        <input type="submit" align="right" />
+    </div>
+</form>
+<input type=text name= "u" maxlength="5" id = "zip" placeholder ="Zipcode"> 
+<button type=button id ="A">Click for results</button>
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="dropdown">
+      <i class="fa fa-bell" aria-hidden="true"></i> 
+  <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Hello</a>
+      <a class="dropdown-item" href="#">Link 2</a>
+      <a class="dropdown-item" href="#">Link 3</a>
+    </div>
+
+
+
+
+</div> 
+
+
+<title>Movie Listing</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css"/>
+    <link rel="stylesheet" href="css/theme1.css"/>
+  </head>
+  <body>
+    <div id="caleandar">
+
+    </div>
+
+    <script type="text/javascript" src="js/caleandar.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
+  </body>
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css"/>
+    <link rel="stylesheet" href="css/theme1.css"/>
+  </head>
+  
+    <div id="caleandar">
+
+    </div>
+
+    <script type="text/javascript" src="js/caleandar.js"></script> 
+    <script type="text/javascript" src="js/demo.js">
+	
+	</script>
+
+
+
+
+
+
+<div class="table-title" ">
+<h3 class="headertest">Movie Listing</h3>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Title</th>
+<th class="text-left">Photo</th> 
+<th class="text-left">Release date</th> 
+<th class="text-left">Link</th> 
+<th class="text-left">Genre</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<tr>
+<td class="text-left" id = "a1"></td>
+<td class="text-left" id = "a2"></td> 
+<td class="text-left" id = "a3"></td>
+<td class="text-left" id = "a4"></td> 
+<td class="text-left" id = "a5"></td>
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td>
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td>
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
