@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang='en' class=''>
+<head>
+<script src='//static.codepen.io/assets/editor/live/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d52303a462c826d54a73.js'></script>
+<script src='//static.codepen.io/assets/editor/live/css_live_reload_init-890dc39bb89183d4642d58b1ae5376a0193342f9aed88ea04330dc14c8d52f55.js'></script>
+<meta charset='UTF-8'>
+<meta name="robots" content="noindex">
+<link rel="shortcut icon" type="image/x-icon" href="//static.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+<link rel="mask-icon" type="" href="//static.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/anon/pen/zReERg" />
+
+
+<style>*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  font-family: "HelveticaNeue-UltraLight", "Helvetica Neue UltraLight",
+    "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  color: rgba(255, 255, 255, 1);
+  margin: 0;
+  padding: 0;
+  background: #4a4a4a;
+  touch-callout: none;
+  select: none;
+  user-select: none;
+  user-select: none;
+  user-select: none;
+  user-select: none;
+}
+#calendar {
+  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  width: 420px;
+  margin: auto;
+  height: 570px;
+  overflow: hidden;
+}
+.header {
+  height: 50px;
+  width: 420px;
+  background: rgba(66, 66, 66, 1);
+  text-align: center;
+  position: relative;
+  z-index: 100;
+}
+.header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+.left,
+.right {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  top: 50%;
+  margin-top: -7.5px;
+  cursor: pointer;
+}
+/*arrow*/
+.left {
+  border-width: 7.5px 10px 7.5px 0;
+  border-color: transparent rgba(160, 159, 160, 1) transparent transparent;
+  left: 20px;
+}
+/*arrow*/
+.right {
+  border-width: 7.5px 0 7.5px 10px;
+  border-color: transparent transparent transparent rgba(160, 159, 160, 1);
+  right: 20px;
+}
+.month {
+  /*overflow: hidden;*/
+  opacity: 0;
+}
+.month.new {
+ animation: fadeIn 1s ease-out;
+ opacity: 1;
+}
+.month.in.next {
+  animation: moveFromTopFadeMonth 0.4s ease-out;
+  animation: moveFromTopFadeMonth 0.4s ease-out;
+  animation: moveFromTopFadeMonth 0.4s ease-out;
+  opacity: 1;
+}
+.month.out.next {
+ animation: moveToTopFadeMonth 0.4s ease-in;
+ animation: moveToTopFadeMonth 0.4s ease-in;
+ animation: moveToTopFadeMonth 0.4s ease-in;
+ opacity: 1;
+}
+.month.in.prev {
+ animation: moveFromBottomFadeMonth 0.4s ease-out;
+ animation: moveFromBottomFadeMonth 0.4s ease-out;
+ animation: moveFromBottomFadeMonth 0.4s ease-out;
+ opacity: 1;
+}
+.month.out.prev {
+  animation: moveToBottomFadeMonth 0.4s ease-in;
+  animation: moveToBottomFadeMonth 0.4s ease-in;
+  animation: moveToBottomFadeMonth 0.4s ease-in;
+  opacity: 1;
+}
+.week {
+  background: #4a4a4a;
+}
+.day {
+  display: inline-block;
+  width: 60px;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top;
+  cursor: pointer;
+  background: #4a4a4a;
+  position: relative;
+  z-index: 100;
+}
+.day.other {
+  color: rgba(255, 255, 255, 0.3);
+}
+.day.today {
+  color: rgba(156, 202, 235, 1);
+}
+.day-name {
+  font-size: 9px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.7px;
+}
+.day-number {
+  font-size: 24px;
+  letter-spacing: 1.5px;
+}
+.day .day-events {
+  list-style: none;
+  margin-top: 3px;
+  text-align: center;
+  height: 12px;
+  line-height: 6px;
+  overflow: hidden;
+}
+.day .day-events span {
+  vertical-align: top;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 5px;
+  height: 5px;
+  line-height: 5px;
+  margin: 0 1px;
+}
+.blue {
+  background: rgba(156, 202, 235, 1);
+}
+.orange {
+  background: rgba(247, 167, 0, 1);
+}
+.green {
+  background: rgba(153, 198, 109, 1);
+}
+.yellow {
+  background: rgba(249, 233, 0, 1);
+}
+.details {
+  position: relative;
+  width: 420px;
+  height: 75px;
+  background: rgba(164, 164, 164, 1);
+  margin-top: 5px;
+  border-radius: 4px;
+}
+.details.in {
+  animation: moveFromTopFade 0.5s ease both;
+  animation: moveFromTopFade 0.5s ease both;
+  animation: moveFromTopFade 0.5s ease both;
+}
+.details.out {
+  animation: moveToTopFade 0.5s ease both;
+  animation: moveToTopFade 0.5s ease both;
+  animation: moveToTopFade 0.5s ease both;
+}
+.arrow {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin-left: -2px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent rgba(164, 164, 164, 1) transparent;
+  transition: all 0.7s ease;
+}
+.events {
+  height: 75px;
+  padding: 7px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.events.in {
+  animation: fadeIn 0.3s ease both;
+  animation: fadeIn 0.3s ease both;
+  animation: fadeIn 0.3s ease both;
+}
+.events.in {
+  animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.details.out .events {
+  animation: fadeOutShrink 0.4s ease both;
+  animation: fadeOutShink 0.4s ease both;
+  animation: fadeOutShink 0.4s ease both;
+}
+.events.out {
+  animation: fadeOut 0.3s ease both;
+  animation: fadeOut 0.3s ease both;
+  animation: fadeOut 0.3s ease both;
+}
+.event {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  padding: 2px 16px;
+  vertical-align: top;
+}
+.event.empty {
+  color: #eee;
+}
+.event-category {
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  margin: 6px 0 0;
+  vertical-align: top;
+}
+.event span {
+  display: inline-block;
+  padding: 0 0 0 7px;
+}
+.entry {
+  position: relative;
+  padding: 0 0 0 25px;
+  font-size: 13px;
+  display: inline-block;
+  line-height: 30px;
+  background: transparent;
+}
+.entry:after {
+  position: absolute;
+  content: "";
+  height: 5px;
+  width: 5px;
+  top: 12px;
+  left: 14px;
+}
+.entry.blue:after {
+  background: rgba(156, 202, 235, 1);
+}
+.entry.orange:after {
+  background: rgba(247, 167, 0, 1);
+}
+.entry.green:after {
+  background: rgba(153, 198, 109, 1);
+}
+.entry.yellow:after {
+  background: rgba(249, 233, 0, 1);
+}
+.entry.red:after {
+  background: rgba(249, 233, 0, 1);
+}
+/* Animations are cool!  */
+ moveFromTopFade {
+  from {
+    opacity: 0.3;
+    height: 0px;
+    margin-top: 0px;
+    transform: translateY(-100%);
+  }
+}
+moveFromTopFade {
+  from {
+    height: 0px;
+    margin-top: 0px;
+    transform: translateY(-100%);
+  }
+}
+moveFromTopFade {
+  from {
+    height: 0px;
+    margin-top: 0px;
+    transform: translateY(-100%);
+  }
+}
+moveToTopFade {
+  to {
+    opacity: 0.3;
+    height: 0px;
+    margin-top: 0px;
+    opacity: 0.3;
+    transform: translateY(-100%);
+  }
+}
+moveToTopFade {
+  to {
+    height: 0px;
+    -moz-transform: translateY(-100%);
+  }
+}
+moveToTopFade {
+  to {
+    height: 0px;
+    transform: translateY(-100%);
+  }
+}
+moveToTopFadeMonth {
+  to {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.95);
+  }
+}
+ moveToTopFadeMonth {
+  to {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+}
+ moveToTopFadeMonth {
+  to {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+}
+ moveFromTopFadeMonth {
+  from {
+    opacity: 0;
+    transform: translateY(30%) scale(0.95);
+  }
+}
+moveFromTopFadeMonth {
+  from {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+}
+ moveFromTopFadeMonth {
+  from {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+}
+moveToBottomFadeMonth {
+  to {
+    opacity: 0;
+    transform: translateY(30%) scale(0.95);
+  }
+}
+ moveToBottomFadeMonth {
+  to {
+    opacity: 0;
+transform: translateY(30%);
+  }
+}
+ moveToBottomFadeMonth {
+  to {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+}
+ moveFromBottomFadeMonth {
+  from {
+    opacity: 0;
+    transform: translateY(-30%) scale(0.95);
+  }
+}
+moveFromBottomFadeMonth {
+  from {
+    opacity: 0;
+   transform: translateY(-30%);
+  }
+}
+ moveFromBottomFadeMonth {
+  from {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+}
+ fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+ fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+ fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+ fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+ fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+ fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+ fadeOutShink {
+  to {
+    opacity: 0;
+    padding: 0px;
+    height: 0px;
+  }
+}
+ fadeOutShink {
+  to {
+    opacity: 0;
+    padding: 0px;
+    height: 0px;
+  }
+}
+ fadeOutShink {
+  to {
+    opacity: 0;
+    padding: 0px;
+    height: 0px; 
+  } 
+  
+  
+  body {
+  background-color: 				#FF0000;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+div.table-title {
+   display: block; 
+ 
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%; 
+  
+}
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:35px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+td:last-child {
+  border-right: 0px;
+}
+th.text-left {
+  text-align: left;
+}
+th.text-center {
+  text-align: center;
+}
+th.text-right {
+  text-align: right;
+}
+td.text-left {
+  text-align: left;
+}
+td.text-center {
+  text-align: center;
+}
+td.text-right {
+  text-align: right;
+}
+	
+.headertest
+    {
+    text-align:center;
+    width:100%;
+    }
+
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%; 
+  
+}
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:35px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+td:last-child {
+  border-right: 0px;
+}
+th.text-left {
+  text-align: left;
+}
+th.text-center {
+  text-align: center;
+}
+th.text-right {
+  text-align: right;
+}
+td.text-left {
+  text-align: left;
+}
+td.text-center {
+  text-align: center;
+}
+td.text-right {
+  text-align: right;
+}
+	
+.headertest
+    {
+    text-align:center;
+    width:100%;
+    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topnav {
+  overflow: hidden;
+  background-color: 	#808080;
+  
+  }
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+ 
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.dropdown-item{
+	padding:20px;
+    background-color: blue;
+  }
+  
+  form.ws-validate{
+  	float:right;
+    display: inline-flex;
+  }
+  
+  .form-row.show-inputbtns {
+  	margin-right: 5px;
+  }
+  
+  button.btn.btn-primary{
+  	margin-left: 440px;
+  }
+}
+</style></head><body>
+<div id="calendar"></div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script src='//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+<script >!function() {
+  var today = moment();
+  function Calendar(selector, events) {
+    this.el = document.querySelector(selector);
+    this.events = events;
+    this.current = moment().date(1);
+    this.draw();
+    var current = document.querySelector('.today');
+    if(current) {
+      var self = this;
+      window.setTimeout(function() {
+        self.openDay(current);
+      }, 500);
+    }
+  }
+  Calendar.prototype.draw = function() {
+    //Create Header
+    this.drawHeader();
+    //Draw Month
+    this.drawMonth();
+    this.drawLegend();
+  }
+  Calendar.prototype.drawHeader = function() {
+    var self = this;
+    if(!this.header) {
+      //Create the header elements
+      this.header = createElement('div', 'header');
+      this.header.className = 'header';
+      this.title = createElement('h1');
+      var right = createElement('div', 'right');
+      right.addEventListener('click', function() { self.nextMonth(); });
+      var left = createElement('div', 'left');
+      left.addEventListener('click', function() { self.prevMonth(); });
+      //Append the Elements
+      this.header.appendChild(this.title); 
+      this.header.appendChild(right);
+      this.header.appendChild(left);
+      this.el.appendChild(this.header);
+    }
+    this.title.innerHTML = this.current.format('MMMM YYYY');
+  }
+  Calendar.prototype.drawMonth = function() {
+    var self = this;
+    
+    this.events.forEach(function(ev) {
+     ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+    });
+    
+    
+    if(this.month) {
+      this.oldMonth = this.month;
+      this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
+      this.oldMonth.addEventListener('webkitAnimationEnd', function() {
+        self.oldMonth.parentNode.removeChild(self.oldMonth);
+        self.month = createElement('div', 'month');
+        self.backFill();
+        self.currentMonth();
+        self.fowardFill();
+        self.el.appendChild(self.month);
+        window.setTimeout(function() {
+          self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
+        }, 16);
+      });
+    } else {
+        this.month = createElement('div', 'month');
+        this.el.appendChild(this.month);
+        this.backFill();
+        this.currentMonth();
+        this.fowardFill();
+        this.month.className = 'month new';
+    }
+  }
+  Calendar.prototype.backFill = function() {
+    var clone = this.current.clone();
+    var dayOfWeek = clone.day();
+    if(!dayOfWeek) { return; }
+    clone.subtract('days', dayOfWeek+1);
+    for(var i = dayOfWeek; i > 0 ; i--) {if (window.CP.shouldStopExecution(1)){break;}
+      this.drawDay(clone.add('days', 1));
+    }
+window.CP.exitedLoop(1);
+  }
+  Calendar.prototype.fowardFill = function() {
+    var clone = this.current.clone().add('months', 1).subtract('days', 1);
+    var dayOfWeek = clone.day();
+    if(dayOfWeek === 6) { return; }
+    for(var i = dayOfWeek; i < 6 ; i++) {if (window.CP.shouldStopExecution(2)){break;}
+      this.drawDay(clone.add('days', 1));
+    }
+window.CP.exitedLoop(2);
+  }
+  Calendar.prototype.currentMonth = function() {
+    var clone = this.current.clone();
+    while(clone.month() === this.current.month()) {if (window.CP.shouldStopExecution(3)){break;}
+      this.drawDay(clone);
+      clone.add('days', 1);
+    }
+window.CP.exitedLoop(3);
+  }
+  Calendar.prototype.getWeek = function(day) {
+    if(!this.week || day.day() === 0) {
+      this.week = createElement('div', 'week');
+      this.month.appendChild(this.week);
+    }
+  }
+  Calendar.prototype.drawDay = function(day) {
+    var self = this;
+    this.getWeek(day);
+    //Outer Day
+    var outer = createElement('div', this.getDayClass(day));
+    outer.addEventListener('click', function() {
+      self.openDay(this);
+    });
+    //Day Name
+    var name = createElement('div', 'day-name', day.format('ddd'));
+    //Day Number
+    var number = createElement('div', 'day-number', day.format('DD'));
+    //Events
+    var events = createElement('div', 'day-events');
+    this.drawEvents(day, events);
+    outer.appendChild(name);
+    outer.appendChild(number);
+    outer.appendChild(events);
+    this.week.appendChild(outer);
+  }
+  Calendar.prototype.drawEvents = function(day, element) {
+    if(day.month() === this.current.month()) {
+      var todaysEvents = this.events.reduce(function(memo, ev) {
+        if(ev.date.isSame(day, 'day')) {
+          memo.push(ev);
+        }
+        return memo;
+      }, []);
+      todaysEvents.forEach(function(ev) {
+        var evSpan = createElement('span', ev.color);
+        element.appendChild(evSpan);
+      });
+    }
+  }
+  Calendar.prototype.getDayClass = function(day) {
+    classes = ['day'];
+    if(day.month() !== this.current.month()) {
+      classes.push('other');
+    } else if (today.isSame(day, 'day')) {
+      classes.push('today');
+    }
+    return classes.join(' ');
+  }
+    Calendar.prototype.openDay = function(el) {
+    var details, arrow;
+    var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
+    var day = this.current.clone().date(dayNumber);
+    var currentOpened = document.querySelector('.details');
+    //Check to see if there is an open detais box on the current row
+    if(currentOpened && currentOpened.parentNode === el.parentNode) {
+      details = currentOpened;
+      arrow = document.querySelector('.arrow');
+    } else {
+      //Close the open events on differnt week row
+      //currentOpened && currentOpened.parentNode.removeChild(currentOpened);
+      if(currentOpened) {
+        currentOpened.addEventListener('webkitAnimationEnd', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.addEventListener('oanimationend', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.addEventListener('msAnimationEnd', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.addEventListener('animationend', function() {
+          currentOpened.parentNode.removeChild(currentOpened);
+        });
+        currentOpened.className = 'details out';
+      }
+      //Create the Details Container
+      details = createElement('div', 'details in');
+      //Create the arrow
+      var arrow = createElement('div', 'arrow');
+      //Create the event wrapper
+      details.appendChild(arrow);
+      el.parentNode.appendChild(details);
+    }
+    var todaysEvents = this.events.reduce(function(memo, ev) {
+      if(ev.date.isSame(day, 'day')) {
+        memo.push(ev);
+      }
+      return memo;
+    }, []);
+    this.renderEvents(todaysEvents, details);
+    arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
+  }
+  Calendar.prototype.renderEvents = function(events, ele) {
+    //Remove any events in the current details element
+    var currentWrapper = ele.querySelector('.events');
+    var wrapper = createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
+    events.forEach(function(ev) {
+      var div = createElement('div', 'event');
+      var square = createElement('div', 'event-category ' + ev.color);
+      var span = createElement('span', '', ev.eventName);
+      div.appendChild(square);
+      div.appendChild(span);
+      wrapper.appendChild(div);
+    });
+    if(!events.length) {
+      var div = createElement('div', 'event empty');
+      var span = createElement('span', '', 'No Events');
+      div.appendChild(span);
+      wrapper.appendChild(div);
+    }
+    if(currentWrapper) {
+      currentWrapper.className = 'events out';
+      currentWrapper.addEventListener('webkitAnimationEnd', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+      currentWrapper.addEventListener('oanimationend', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+      currentWrapper.addEventListener('msAnimationEnd', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+      currentWrapper.addEventListener('animationend', function() {
+        currentWrapper.parentNode.removeChild(currentWrapper);
+        ele.appendChild(wrapper);
+      });
+    } else {
+      ele.appendChild(wrapper);
+    }
+  }
+  Calendar.prototype.nextMonth = function() {
+    this.current.add('months', 1);
+    this.next = true;
+    this.draw();
+  }
+  Calendar.prototype.prevMonth = function() {
+    this.current.subtract('months', 1);
+    this.next = false;
+    this.draw();
+  }
+  window.Calendar = Calendar;
+  function createElement(tagName, className, innerText) {
+    var ele = document.createElement(tagName);
+    if(className) {
+      ele.className = className;
+    }
+    if(innerText) {
+      ele.innderText = ele.textContent = innerText;
+    }
+    return ele;
+  }
+}();
+!function() {
+  var data = [
+    { eventName: 'Upcoming Events: 8:00pm Black Panther', calendar: 'Movies', color: 'orange' },
+    { eventName: 'Upcoming Events: 5:30 pm Red Sparrow', calendar: 'Movies', color: 'orange' },
+    { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
+    { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
+  
+    
+  ];
+  
+  function addDate(ev) {
+    
+  }
+  var calendar = new Calendar('#calendar', data);
+}();
+//# sourceURL=pen.js
+</script> 
+
+<div class="topnav">
+<form action="" class="ws-validate">
+     
+    <div class="form-row show-inputbtns" >
+        <input type="date" data-date-inline-picker="false" data-date-popover='{
+	"inline": true
+}' />
+    </div>
+    <div class="form-rows">
+        <input type="submit" align="right" />
+    </div>
+</form>
+<input type=text name= "u" maxlength="5" id = "zip" placeholder ="Zipcode"> 
+<button type=button id ="A">Click for results</button>
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="dropdown">
+      <i class="fa fa-bell" aria-hidden="true"></i> 
+  <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Hello</a>
+      <a class="dropdown-item" href="#">Link 2</a>
+      <a class="dropdown-item" href="#">Link 3</a>
+    </div>
+
+
+
+
+</div> 
+
+
+<title>Movie Listing</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css"/>
+    <link rel="stylesheet" href="css/theme1.css"/>
+  </head>
+  <body>
+    <div id="caleandar">
+
+    </div>
+
+    <script type="text/javascript" src="js/caleandar.js"></script>
+    <script type="text/javascript" src="js/demo.js"></script>
+  </body>
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="css/demo.css"/>
+    <link rel="stylesheet" href="css/theme1.css"/>
+  </head>
+  
+    <div id="caleandar">
+
+    </div>
+
+    <script type="text/javascript" src="js/caleandar.js"></script> 
+    <script type="text/javascript" src="js/demo.js">
+	
+	</script>
+
+
+
+
+
+
+<div class="table-title" ">
+<h3 class="headertest">Movie Listing</h3>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Title</th>
+<th class="text-left">Photo</th> 
+<th class="text-left">Release date</th> 
+<th class="text-left">Link</th> 
+<th class="text-left">Genre</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<tr>
+<td class="text-left" id = "a1"></td>
+<td class="text-left" id = "a2"></td> 
+<td class="text-left" id = "a3"></td>
+<td class="text-left" id = "a4"></td> 
+<td class="text-left" id = "a5"></td>
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td>
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td>
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+</tr>
+<tr>
+<td class="text-left"></td>
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td> 
+<td class="text-left"></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
