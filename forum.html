@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+      <script type = "text/javascript">
+var movie = "<?php  $movie = $_GET['title']; echo $movie; ?>";      
+         $(document).ready(function() {
+        
+           $.ajax({
+                type: "GET",
+                url: "forum.php",
+		data: "title=" + movie,
+                success: function(data)//should be data
+        { var pd = JSON.parse(data);
+	
+        
+	$("#header").html( movie + ' Reviews');
+	$.each(pd, function(){
+	$("#fill").append('User: '+  this.user + ' ' + ' Comment: ' + this.comment + '<br>');
+		});
+        }, // success
+                 }); // ajax
+  
+ $("#A").click(function(){
+var insert = $("#t").val(); 
+   $.ajax({
+                type: "GET",
+                url: "forum.php",
+                data: "desc=" + insert + "&title=" + movie,
+                success: function(data)//should be data
+        { var pd = JSON.parse(data);
+ 	 $("#t").val("");
+        }, // success
+                 }); // ajax
+                
+         }); // click
+}); // document
+    </script>
+</head>
+<body>
+
+<div class="container">
+  <h2 id= "header">Reviews</h2>
+  <form>
+	 <div class="form-group">
+      <label for="pwd">Username:</label>
+      <input type="text" class="form-control" id="t" placeholder="Please enter your username:" name="pwd">
+    </div>
+	<div class="form-group">
+      <label for="pwd">Movie Title:</label>
+      <input type="text" class="form-control" id="t" placeholder="Please enter movie title:" name="pwd">
+    </div>
+	 
+	 <div class="form-group">
+      <label for="pwd">Comments/Description:</label><br>
+      
+     <textarea placeholder="Write a review in 100 characters"></textarea>
+    </div>
+	<button type="button" id = "A" class="btn btn-default">Send</button>
+	</div>
+  </form>
+</div>
+<div id = "fill"></div>
+</body>
+</html>
